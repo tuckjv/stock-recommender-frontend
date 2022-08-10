@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserInput from "./userInput"
 import Output from "./output"
-import {Circles} from 'react-loader-spinner'
 
 class Inputs extends React.Component {
     constructor(props) {
@@ -69,7 +68,7 @@ class Inputs extends React.Component {
         }
         else if (this.state.setResponse === 2) {
             console.log("hello worlds")
-            var content = (
+            content = (
                 <div className = "text-center">
                     <Output status = "Reccomend" data = {this.state.reccomend}/>
                     <Output status = "Do Not Reccomend" data = {this.state.notRec}/>
@@ -78,7 +77,7 @@ class Inputs extends React.Component {
             );
         }
         else {
-            var content = (<text>{"Loading"}</text>)
+            content = (<text>{"Loading"}</text>)
         }
         return (<div>{content}</div>);
     }

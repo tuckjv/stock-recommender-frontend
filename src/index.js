@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './Style.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import UserInput from './Components/userInput'
 import Inputs from './Components/inputs'
 import './bootstrap-4.3.1-dist/css/bootstrap.css'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";

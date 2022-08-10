@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function Output(props) {
-    if (props.data.length != 0) {
+    if (props.data.length !== 0) {
         const stocks = props.data.map((out) => <li className = "list-style: none">{out}</li>);
         return(<div>
             <strong>We {props.status}:</strong>

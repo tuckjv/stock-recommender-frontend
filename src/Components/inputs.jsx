@@ -25,7 +25,7 @@ class Inputs extends React.Component {
     handleClick = async () => {
     const sleep = ms => new Promise(res => setTimeout(res, ms));
      this.setState({setResponse: 1});
-     await sleep('100');
+     await sleep('400');
         fetch(`https://stock-backend-2.herokuapp.com/`,{
             method: "POST",
             headers: {
@@ -77,7 +77,7 @@ class Inputs extends React.Component {
             );
         }
         else {
-            content = (<text>{"Loading"}</text>)
+            content = (<text id = "Loading">{"Loading"}</text>)
         }
         return (<div>{content}</div>);
     }

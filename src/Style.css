@@ -4,7 +4,6 @@ body {
     align-items: center;
     height: 100vh;
     background: linear-gradient(to top left, #1b31ff, #01eaff);
-    background-repeat: cover;
     color: white;
 }
 
@@ -16,7 +15,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 80vh;
-    width: 400vw;
+    width: 100vw;
   }
 
 input {
@@ -40,11 +39,19 @@ input[type=submit] {
 }
 
 ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-repeat: cover;
     color: white;
     list-style: none;
 }
+
+strong {
+    color: white;
+}
+
+li {
+    margin-left: -30px;
+}
+
+text {
+    color: white;
+}
+

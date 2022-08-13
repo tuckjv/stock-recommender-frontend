@@ -27,10 +27,12 @@ class Inputs extends React.Component {
      this.setState({setResponse: 1});
      await sleep('400');
         fetch(`https://stock-backend-2.herokuapp.com/`,{
+            mode: 'no-cors',
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+
             },
             body: JSON.stringify({
                 first: this.state.inputs[0].value,
@@ -39,7 +41,7 @@ class Inputs extends React.Component {
                 fourth: this.state.inputs[3].value,
                 fifth: this.state.inputs[4].value,
             }),
-        }).then(response => response.json())
+        }).catch(() => {this.setState({setResponse: 4})}).then(response => response.json())
         .then(responseJson => {this.setState({reccomend : responseJson.reccomend, notRec : responseJson.notRec, neutral: responseJson.neutral})})
         .then(this.setState({setResponse : 2}));
     }//Handles updating the program after the user submits the form
@@ -76,8 +78,11 @@ class Inputs extends React.Component {
                 </div>
             );
         }
+        else if (this.state.setResponse === 4) {
+            content = (<text>An error occured, please reload the page and try again</text>)
+        }
         else {
-            content = (<text id = "Loading">{"Loading"}</text>)
+            content = (<text>{"Loading"}</text>)
         }
         return (<div>{content}</div>);
     }

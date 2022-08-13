@@ -12,7 +12,7 @@ class UserInput extends React.Component {
     render() { 
         return (
             <div>
-                Stock {this.state.number}:<br></br>
+                Ticker {this.state.number}:<br></br>
                 <input onChange = {this.props.handleChange(this.props.id)} defaultValue = "" type = "text"></input>
             </div>
         );

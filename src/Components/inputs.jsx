@@ -26,7 +26,7 @@ class Inputs extends React.Component {
         const sleep = ms => new Promise(res => setTimeout(res, ms));
         this.setState({setResponse: 1});
         await sleep('400');
-        let z = await fetch(`https://polar-tundra-85946.herokuapp.com/https://stock-backend-2.herokuapp.com/`,{
+        await fetch(`https://polar-tundra-85946.herokuapp.com/https://stock-backend-2.herokuapp.com/`,{
             method: "POST",
             headers: {
                 'Accept': 'application/json',

@@ -23,11 +23,10 @@ class Inputs extends React.Component {
     } //Contstuctor for the main program component
 
     handleClick = async () => {
-    const sleep = ms => new Promise(res => setTimeout(res, ms));
-     this.setState({setResponse: 1});
-     await sleep('400');
-        fetch(`https://stock-backend-2.herokuapp.com/`,{
-            mode: 'no-cors',
+        const sleep = ms => new Promise(res => setTimeout(res, ms));
+        this.setState({setResponse: 1});
+        await sleep('400');
+        let z = await fetch(`https://polar-tundra-85946.herokuapp.com/https://stock-backend-2.herokuapp.com/`,{
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -41,8 +40,10 @@ class Inputs extends React.Component {
                 fourth: this.state.inputs[3].value,
                 fifth: this.state.inputs[4].value,
             }),
-        }).catch(() => {this.setState({setResponse: 4})}).then(response => response.json())
-        .then(responseJson => {this.setState({reccomend : responseJson.reccomend, notRec : responseJson.notRec, neutral: responseJson.neutral})})
+        }).then(response => response.json())
+        .then(responseJson => {
+            this.setState({
+            reccomend : responseJson.reccomend, notRec : responseJson.notRec, neutral: responseJson.neutral})})
         .then(this.setState({setResponse : 2}));
     }//Handles updating the program after the user submits the form
 
@@ -55,7 +56,6 @@ class Inputs extends React.Component {
     } //Updates the state of the input when the user makes a change in the form
 
     render() { 
-
         if (this.state.setResponse === 0) {
             var content = (
             <body id = "body">
@@ -70,16 +70,19 @@ class Inputs extends React.Component {
         }
         else if (this.state.setResponse === 2) {
             console.log("hello worlds")
-            content = (
-                <div className = "text-center">
-                    <Output status = "Reccomend" data = {this.state.reccomend}/>
-                    <Output status = "Do Not Reccomend" data = {this.state.notRec}/>
-                    <Output status = "Are Neutral Towards" data = {this.state.neutral}/>
-                </div>
-            );
-        }
-        else if (this.state.setResponse === 4) {
-            content = (<text>An error occured, please reload the page and try again</text>)
+            if (this.state.reccomend === 'fail') {
+                content = (<text>{"Error, please try again!"}</text>);
+            }
+            else {
+                content = (
+                    <div className = "text-center">
+                        <Output status = "Reccomend" data = {this.state.reccomend}/>
+                        <Output status = "Do Not Reccomend" data = {this.state.notRec}/>
+                        <Output status = "Are Neutral Towards" data = {this.state.neutral}/>
+                    </div>
+                );
+            }
+            
         }
         else {
             content = (<text>{"Loading"}</text>)
@@ -87,5 +90,4 @@ class Inputs extends React.Component {
         return (<div>{content}</div>);
     }
 }
- 
 export default Inputs;

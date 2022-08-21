@@ -44,7 +44,7 @@ class Inputs extends React.Component {
         .then(responseJson => {
             this.setState({
             reccomend : responseJson.reccomend, notRec : responseJson.notRec, neutral: responseJson.neutral})})
-        .then(this.setState({setResponse : 2}));
+        .then(this.setState({setResponse : 2})); //Make a request to the server, update the recommendation states, update the response state to 2
     }//Handles updating the program after the user submits the form
 
     handleChange = (id) => e => {
@@ -67,12 +67,11 @@ class Inputs extends React.Component {
                     </form>
                 </div>
             </body>);
-        }
+        } //If the user has not submitted the form, display the form
         else if (this.state.setResponse === 2) {
-            console.log("hello worlds")
             if (this.state.reccomend === 'fail') {
                 content = (<text>{"Error, please try again!"}</text>);
-            }
+            } //If the recommendation was a failure, display an error message
             else {
                 content = (
                     <div className = "text-center">
@@ -81,12 +80,11 @@ class Inputs extends React.Component {
                         <Output status = "Are Neutral Towards" data = {this.state.neutral}/>
                     </div>
                 );
-            }
-            
-        }
+            } //If it was a succes, display the results
+        } //Display either the results or an error message
         else {
             content = (<text>{"Loading"}</text>)
-        }
+        } //If the client has not recieved a response yet, display a loading message
         return (<div>{content}</div>);
     }
 }

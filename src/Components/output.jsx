@@ -7,7 +7,7 @@ function Output(props) {
             <strong>We {props.status}:</strong>
             <ul>{stocks}</ul>
         </div>);
-    } //
+    } //Display the reccomendation status and whatever stocks fall into that category
     else {
         return null;
     } //If there are no stocks in the particular reccomendation category, then nothing will be displayed

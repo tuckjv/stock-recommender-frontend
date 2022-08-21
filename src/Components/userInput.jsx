@@ -7,7 +7,7 @@ class UserInput extends React.Component {
         this.state = {
             number: this.props.number,
         }
-    }
+    } //Constructor which sets the number variable to whatever was passed in through props
 
     render() { 
         return (
@@ -16,7 +16,7 @@ class UserInput extends React.Component {
                 <input onChange = {this.props.handleChange(this.props.id)} defaultValue = "" type = "text"></input>
             </div>
         );
-    }
+    } //Displays the ticker number and allows for the user to input a ticker
 }
  
 export default UserInput;
